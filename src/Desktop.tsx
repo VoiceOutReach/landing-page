@@ -26,29 +26,42 @@ const Desktop = () => {
         </p>
 
         <form
-          action="https://formsubmit.io/send/founder@voiceoutreach.ai"
-          method="POST"
-          className="flex flex-col items-start space-y-3 mb-4"
-        >
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="Enter your email"
-            className="px-4 py-1 rounded-full w-full max-w-[220px]"
-          />
-          <button
-            type="submit"
-            className="bg-[#959AB6] text-white font-bold text-xs tracking-[2.6px] px-6 py-2 rounded-full"
-          >
-            JOIN THE WAITLIST
-          </button>
+  action="https://formsubmit.co/founder@voiceoutreach.ai"
+  method="POST"
+  target="hidden_iframe"
+  className="flex flex-col items-start space-y-3 mb-4"
+  onSubmit={(e) => {
+    e.target.reset();
+    const msg = document.getElementById("success-msg");
+    if (msg) msg.style.display = "block";
+  }}
+>
+  <input
+    type="email"
+    name="email"
+    required
+    placeholder="Enter your email"
+    className="px-4 py-1 rounded-full w-full max-w-[220px]"
+  />
 
-          {/* Hidden fields */}
-          <input type="hidden" name="_redirect" value="https://voiceoutreach.ai/thankyou" />
-          <input type="hidden" name="_email.template.title" value="Welcome to VoiceOutReach" />
-          <input type="hidden" name="_email.template.body" value="Thanks for joining the waitlist! We’ll keep you posted. - Team VoiceOutReach" />
-        </form>
+  <!-- Hidden fields -->
+  <input type="hidden" name="_subject" value="New Waitlist Signup!" />
+  <input type="hidden" name="_autoresponse" value="Thanks for signing up! We’ll be in touch soon." />
+  <input type="hidden" name="_template" value="box" />
+
+  <button
+    type="submit"
+    className="px-4 py-1 rounded-full bg-[#4F46E5] text-white hover:bg-[#4338CA]"
+  >
+    Join Waitlist
+  </button>
+</form>
+
+<iframe name="hidden_iframe" style={{ display: 'none' }}></iframe>
+
+<p id="success-msg" style={{ display: 'none', color: 'green' }}>
+  ✅ You're on the list!
+</p>
 
         <p className="text-sm max-w-md mt-4 leading-relaxed">
           Join the waitlist to be among the first to try AI-generated LinkedIn
