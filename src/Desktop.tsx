@@ -29,3 +29,5 @@
     Join Waitlist
   </button>
 </form>
+export default Desktop;
+
