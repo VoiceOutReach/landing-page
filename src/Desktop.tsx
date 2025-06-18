@@ -6,7 +6,10 @@ const Desktop = () => {
     <div className="flex flex-col md:flex-row h-screen w-full text-[#959AB6]">
       {/* Left Section */}
       <div className="w-full md:w-[35%] bg-[#DDE0EF] flex flex-col px-8 md:px-16 pt-6 md:pt-10">
-        <a href="#" className="text-white text-lg mb-6 md:mb-9 font-medium">
+        <a
+          href="#"
+          className="text-white text-lg mb-6 md:mb-9 font-medium"
+        >
           VoiceOutReach.ai
         </a>
 
@@ -25,9 +28,8 @@ const Desktop = () => {
           like you.
         </p>
 
-        {/* FORM */}
         <form
-          action="https://formsubmit.co/hassan@voiceoutreach.ai"
+          action="https://formsubmit.io/send/hassan@voiceoutreach.ai"
           method="POST"
           className="flex flex-col items-start space-y-3 mb-4"
         >
