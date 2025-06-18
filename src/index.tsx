@@ -9,3 +9,5 @@ root.render(
     <App />
   </React.StrictMode>
 );
+cd /Users/voiceoutreach/voiceoutreach-app
+
