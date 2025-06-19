@@ -1,19 +1,22 @@
 import React from "react";
 import demoImage from "./assets/voiceoutreach-demo.jpg";
+import logo from "./assets/logo-purple.png"; // Import your logo
 
 const Desktop = () => {
   return (
     <div className="flex flex-col md:flex-row h-screen w-full text-[#959AB6]">
       {/* Left Section */}
-      <div className="w-full md:w-[35%] bg-[#DDE0EF] flex flex-col px-8 md:px-16 pt-6 md:pt-10">
-        <a
-          href="#"
-          className="text-white text-lg mb-6 md:mb-9 font-medium"
-        >
-          VoiceOutReach.ai
-        </a>
+      <div className="w-full md:w-[40%] bg-[#DDE0EF] flex flex-col px-8 md:px-16 pt-6 md:pt-10">
+        {/* Logo */}
+        <div className="mb-6 md:mb-9">
+          <img
+            src={logo}
+            alt="VoiceOutReach.ai Logo"
+            className="w-[140px] h-auto"
+          />
+        </div>
 
-        <h1 className="text-[24px] md:text-[28px] font-bold text-white leading-snug mb-3">
+        <h1 className="text-[24px] md:text-[32px] font-bold text-white leading-snug mb-3">
           Break Through the Noise.{" "}
           <span className="italic text-[#959AB6] font-extrabold">
             Send Personalized Voice DMs
@@ -28,8 +31,9 @@ const Desktop = () => {
           like you.
         </p>
 
+        {/* FORM */}
         <form
-          action="https://formsubmit.io/send/hassan@voiceoutreach.ai"
+          action="https://formsubmit.co/hassan@voiceoutreach.ai"
           method="POST"
           className="flex flex-col items-start space-y-3 mb-4"
         >
@@ -70,7 +74,7 @@ const Desktop = () => {
           voice outreach. No spam. Just early access and real results.
         </p>
 
-        <p className="text-sm mt-5 max-w-md font-semibold">
+        <p className="text-sm mt-9 max-w-md font-bold">
           Helps recruiters 3× replies{" "}
           <span className="font-normal">
             from hiring managers on LinkedIn — using AI voice notes that sound
@@ -78,7 +82,7 @@ const Desktop = () => {
           </span>
         </p>
 
-        <p className="italic text-sm mt-5 max-w-md">
+        <p className="italic text-sm mt-9 max-w-md">
           “This is a game-changer for cold outreach. My reply rate tripled —
           and it sounds just like me.”
           <br />
@@ -88,12 +92,12 @@ const Desktop = () => {
         </p>
       </div>
 
-      {/* Right Section - Image */}
-      <div className="w-full md:w-[65%] bg-white flex items-center justify-center p-6 md:p-8">
+      {/* Right Section - Centered Image */}
+      <div className="w-full md:w-[45%] bg-white flex items-center justify-center p-6 md:p-8">
         <img
           src={demoImage}
           alt="VoiceOutReach demo"
-          className="rounded-2xl shadow-xl w-full md:w-[85%] h-auto object-contain"
+          className="rounded-2xl shadow-xl object-contain max-w-[85%] h-auto"
         />
       </div>
     </div>
