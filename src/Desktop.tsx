@@ -45,7 +45,7 @@ const Desktop = () => {
             })
               .then((res) => {
                 if (res.ok) {
-                  alert("✅ Thank you! You’ll get early access soon.");
+                  alert("✅ Boom! You're officially on the waitlist. Early access is coming your way.");
                   (e.target as HTMLFormElement).reset();
                 } else {
                   alert("❌ Something went wrong. Try again later.");
