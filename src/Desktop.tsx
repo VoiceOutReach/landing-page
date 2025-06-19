@@ -33,42 +33,7 @@ const Desktop = () => {
           like you.
         </p>
 
-        {/* Waitlist Form - Using Formspree */}
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            const formData = new FormData(e.target as HTMLFormElement);
-            fetch("https://formspree.io/f/xldnlykb", {
-              method: "POST",
-              body: formData,
-              headers: { Accept: "application/json" },
-            })
-              .then((res) => {
-                if (res.ok) {
-                  alert("✅ Boom! You're officially on the waitlist. Early access is coming your way.");
-                  (e.target as HTMLFormElement).reset();
-                } else {
-                  alert("❌ Something went wrong. Try again later.");
-                }
-              })
-              .catch(() => alert("❌ Error submitting form."));
-          }}
-          className="flex flex-col items-start space-y-3 mb-4"
-        >
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="Enter your email"
-            className="px-4 py-1 rounded-full w-[220px]"
-          />
-          <button
-            type="submit"
-            className="bg-[#959AB6] text-white font-bold text-xs tracking-[2.6px] px-6 py-2 rounded-full"
-          >
-            JOIN THE WAITLIST
-          </button>
-        </form>
+        {/* 🔒 FORM REMOVED — for debug */}
 
         {/* Supporting Text */}
         <p className="text-sm max-w-md mt-4 leading-relaxed">
@@ -95,15 +60,4 @@ const Desktop = () => {
       </div>
 
       {/* Right Section - Image */}
-      <div className="w-full md:w-[60%] bg-white flex items-center justify-center p-6 md:p-8">
-        <img
-          src={demoImage}
-          alt="VoiceOutReach demo"
-          className="rounded-2xl shadow-xl object-contain max-w-[60%] h-auto"
-        />
-      </div>
-    </div>
-  );
-};
-
-export default Desktop;
+      <div className="w-full md:w-[60%] bg-white flex items-
