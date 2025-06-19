@@ -1,8 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import demoImage from "./assets/voiceoutreach-demo.jpg";
-import logo from "./assets/logo-purple.png"; // Import your logo
+import logo from "./assets/logo-purple.png";
 
 const Desktop = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("_email.template.title", "Welcome to VoiceOutReach");
+    formData.append(
+      "_email.template.body",
+      "Thanks for joining the waitlist! We’ll keep you posted. - Team VoiceOutReach"
+    );
+    formData.append("_email.from", "hassan@voiceoutreach.ai");
+
+    try {
+      await fetch("https://formsubmit.co/ajax/hassan@voiceoutreach.ai", {
+        method: "POST",
+        body: formData,
+      });
+
+      setSubmitted(true);
+      setEmail("");
+    } catch (error) {
+      console.error("Submission error:", error);
+    }
+  };
+
   return (
     <div className="flex flex-col md:flex-row h-screen w-full text-[#959AB6]">
       {/* Left Section */}
@@ -16,6 +44,7 @@ const Desktop = () => {
           />
         </div>
 
+        {/* Headline */}
         <h1 className="text-[24px] md:text-[32px] font-bold text-white leading-snug mb-3">
           Break Through the Noise.{" "}
           <span className="italic text-[#959AB6] font-extrabold">
@@ -32,42 +61,32 @@ const Desktop = () => {
         </p>
 
         {/* FORM */}
-        <form
-          action="https://formsubmit.co/hassan@voiceoutreach.ai"
-          method="POST"
-          className="flex flex-col items-start space-y-3 mb-4"
-        >
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="Enter your email"
-            className="px-4 py-1 rounded-full w-[220px]"
-          />
-          <button
-            type="submit"
-            className="bg-[#959AB6] text-white font-bold text-xs tracking-[2.6px] px-6 py-2 rounded-full"
+        {!submitted ? (
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col items-start space-y-3 mb-4"
           >
-            JOIN THE WAITLIST
-          </button>
-
-          {/* Hidden fields */}
-          <input
-            type="hidden"
-            name="_redirect"
-            value="https://voiceoutreach.ai/thankyou"
-          />
-          <input
-            type="hidden"
-            name="_email.template.title"
-            value="Welcome to VoiceOutReach"
-          />
-          <input
-            type="hidden"
-            name="_email.template.body"
-            value="Thanks for joining the waitlist! We’ll keep you posted. - Team VoiceOutReach"
-          />
-        </form>
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="px-4 py-1 rounded-full w-[220px]"
+            />
+            <button
+              type="submit"
+              className="bg-[#959AB6] text-white font-bold text-xs tracking-[2.6px] px-6 py-2 rounded-full"
+            >
+              JOIN THE WAITLIST
+            </button>
+          </form>
+        ) : (
+          <p className="text-sm text-white font-medium mt-2">
+            🎉 You're on the list. Thanks for joining!
+          </p>
+        )}
 
         <p className="text-sm max-w-md mt-4 leading-relaxed">
           Join the waitlist to be among the first to try AI-generated LinkedIn
