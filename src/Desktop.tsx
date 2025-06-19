@@ -33,7 +33,7 @@ const Desktop = () => {
           like you.
         </p>
 
-        {/* Waitlist Form using Formspree */}
+        {/* Formspree Waitlist Form */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -45,7 +45,7 @@ const Desktop = () => {
             })
               .then((res) => {
                 if (res.ok) {
-                  alert("Boom! You’re officially on the waitlist. Early access is coming your way");
+                  alert("✅ Boom! You’re officially on the waitlist. Early access is coming your way.");
                   (e.target as HTMLFormElement).reset();
                 } else {
                   alert("❌ Something went wrong. Try again later.");
@@ -62,6 +62,9 @@ const Desktop = () => {
             placeholder="Enter your email"
             className="px-4 py-1 rounded-full w-[220px]"
           />
+          {/* Hidden input to tag Nova */}
+          <input type="hidden" name="nova" value="true" />
+
           <button
             type="submit"
             className="bg-[#959AB6] text-white font-bold text-xs tracking-[2.6px] px-6 py-2 rounded-full"
