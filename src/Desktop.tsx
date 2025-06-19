@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import demoImage from "./assets/voiceoutreach-demo.jpg";
 import logo from "./assets/logo-purple.png";
 
 const Desktop = () => {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      const res = await fetch("https://formspree.io/f/xldnlykb", {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+        e.currentTarget.reset();
+      } else {
+        alert("❌ Something went wrong. Please try again later.");
+      }
+    } catch (error) {
+      alert("❌ Submission error.");
+    }
+  };
+
   return (
     <div className="flex flex-col md:flex-row h-screen w-full text-[#959AB6]">
       {/* Left Section */}
@@ -33,7 +57,31 @@ const Desktop = () => {
           like you.
         </p>
 
-        {/* 🔒 FORM REMOVED — for debug */}
+        {/* FORM */}
+        {!submitted ? (
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col items-start space-y-3 mb-4"
+          >
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Enter your email"
+              className="px-4 py-1 rounded-full w-[220px]"
+            />
+            <button
+              type="submit"
+              className="bg-[#959AB6] text-white font-bold text-xs tracking-[2.6px] px-6 py-2 rounded-full"
+            >
+              JOIN THE WAITLIST
+            </button>
+          </form>
+        ) : (
+          <p className="text-green-100 text-sm font-semibold mb-4">
+            ✅ Boom! You’re officially on the waitlist. Early access is coming your way.
+          </p>
+        )}
 
         {/* Supporting Text */}
         <p className="text-sm max-w-md mt-4 leading-relaxed">
@@ -60,4 +108,15 @@ const Desktop = () => {
       </div>
 
       {/* Right Section - Image */}
-      <div className="w-full md:w-[60%] bg-white flex items-
+      <div className="w-full md:w-[60%] bg-white flex items-center justify-center p-6 md:p-8">
+        <img
+          src={demoImage}
+          alt="VoiceOutReach demo"
+          className="rounded-2xl shadow-xl object-contain max-w-[60%] h-auto"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Desktop;
