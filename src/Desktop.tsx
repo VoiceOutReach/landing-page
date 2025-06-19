@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import demoImage from "./assets/voiceoutreach-demo.jpg";
 import logo from "./assets/logo-purple.png";
 
 const Desktop = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
   return (
     <div className="flex flex-col md:flex-row h-screen w-full text-[#959AB6]">
       {/* Left Section */}
@@ -35,7 +33,7 @@ const Desktop = () => {
           like you.
         </p>
 
-        {/* Waitlist Form */}
+        {/* Waitlist Form using Formspree */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -47,7 +45,7 @@ const Desktop = () => {
             })
               .then((res) => {
                 if (res.ok) {
-                  setIsSubmitted(true);
+                  alert("✅ Boom! You're officially on the waitlist. Early access is coming your way.");
                   (e.target as HTMLFormElement).reset();
                 } else {
                   alert("❌ Something went wrong. Try again later.");
@@ -71,24 +69,6 @@ const Desktop = () => {
             JOIN THE WAITLIST
           </button>
         </form>
-
-        {/* Submission Confirmation */}
-        {isSubmitted && (
-          <div className="mt-4 bg-white p-4 rounded-lg shadow-md flex items-center space-x-3 transition-opacity duration-300 ease-in-out">
-            <svg
-              className="w-6 h-6 text-green-500"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-            <p className="text-sm font-semibold text-gray-800">
-              🎉 You're on the waitlist! We'll be in touch soon.
-            </p>
-          </div>
-        )}
 
         {/* Supporting Text */}
         <p className="text-sm max-w-md mt-4 leading-relaxed">
