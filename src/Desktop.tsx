@@ -93,11 +93,11 @@ const Desktop = () => {
       </div>
 
       {/* Right Section - Centered Image */}
-      <div className="w-full md:w-[45%] bg-white flex items-center justify-center p-6 md:p-8">
+      <div className="w-full md:w-[65%] bg-white flex items-center justify-center p-6 md:p-8">
         <img
           src={demoImage}
           alt="VoiceOutReach demo"
-          className="rounded-2xl shadow-xl object-contain max-w-[85%] h-auto"
+          className="rounded-2xl shadow-xl object-contain max-w-[60%] h-auto"
         />
       </div>
     </div>
